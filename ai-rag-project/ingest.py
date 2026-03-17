@@ -1,28 +1,16 @@
-import sys
-import os
-sys.path.append(os.path.abspath("../src"))
+# ✅ SIMPLE LOCAL STORAGE (no server needed)
 
-import endee
-from rag import embed
+docs = [
+    "Endee is a vector database",
+    "AI uses embeddings for semantic search",
+    "Machine learning is part of AI"
+]
 
-db = endee.Client()
+# just simulate storage
+data_store = []
 
-docs = []
+for doc in docs:
+    data_store.append(doc)
 
-with open("data/knowledge.txt") as f:
-    for line in f:
-        line = line.strip()
-        if line:
-            docs.append(line)
-
-vectors = []
-
-for d in docs:
-    vectors.append({
-        "text": d,
-        "vector": embed(d)
-    })
-
-db.insert(vectors)
-
-print("Documents stored in Endee database")
+print("✅ Data stored successfully!")
+print(data_store)
